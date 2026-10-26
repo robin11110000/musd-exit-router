@@ -28,6 +28,7 @@ contract TrovePilotDemoScript is Script {
     uint16 public keeperFeeBps;
 
     function run() external {
+        require(block.chainid == MezoAddresses.CHAIN_ID, "Mezo testnet only");
         pk = vm.envUint("DEPLOYER_PRIVATE_KEY");
         keeper = vm.addr(pk);
         user = vm.envOr("USER", keeper);

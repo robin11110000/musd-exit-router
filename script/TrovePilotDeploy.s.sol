@@ -24,6 +24,7 @@ contract TrovePilotDeployScript is Script {
     address public deployedRegistry;
 
     function run() external {
+        require(block.chainid == MezoAddresses.CHAIN_ID, "Mezo testnet only");
         // ========== ENV ==========
         // DEPLOYER_PRIVATE_KEY=0x...
         // OWNER=0x... (optional, defaults to deployer)
