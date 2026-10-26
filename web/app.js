@@ -41,7 +41,7 @@ form.addEventListener('submit',async e=>{
    else add(card,'div',`Full input quoted${route.feeBps?` · ${(route.feeBps/100).toFixed(2)}% redemption fee included`:''}`,'route-detail');
   }
   const meta=document.querySelector('#quote-meta');meta.replaceChildren();
-  const link=add(meta,'a',`Block ${Number(data.blockNumber).toLocaleString()} ↗`);link.href=`https://explorer.mezo.org/block/${data.blockNumber}`;link.target='_blank';link.rel='noopener noreferrer';
+  const link=add(meta,'a',`Testnet block ${Number(data.blockNumber).toLocaleString()} ↗`);link.href=`https://explorer.test.mezo.org/block/${data.blockNumber}`;link.target='_blank';link.rel='noopener noreferrer';
   add(meta,'div','Single-block comparison · gas excluded · supported direct routes only');
   status.textContent='Quote loaded. Highest gross output is not a guaranteed net return.';results.hidden=false;
   quoteTimer=setTimeout(()=>{status.textContent='This quote is older than 30 seconds. Compare again to refresh.';document.querySelectorAll('.tag').forEach(el=>el.remove());},30000);

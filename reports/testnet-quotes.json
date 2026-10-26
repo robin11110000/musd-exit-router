@@ -1,0 +1,58 @@
+{
+  "chainId": 31611,
+  "blockNumber": "16381678",
+  "blockHash": "0x27a9ac3137632b580de81b819d07f2465a8fbbf0d4f6eed0dc529be65136eed9",
+  "blockTimestamp": "1793020720",
+  "amount": "100000000000000000000",
+  "routes": [
+    {
+      "id": "basic",
+      "name": "Basic pool",
+      "status": "quoted",
+      "out": "1270997187094719",
+      "spent": "100000000000000000000",
+      "fullFill": true,
+      "kind": "pool quote",
+      "refund": "0"
+    },
+    {
+      "id": "cl-200",
+      "name": "Concentrated pool · 200",
+      "status": "unavailable",
+      "reason": "This route could not be quoted at this block.",
+      "refund": null
+    },
+    {
+      "id": "cl-2000",
+      "name": "Concentrated pool · 2000",
+      "status": "quoted",
+      "out": "4754485548777893339496",
+      "spent": "100000000000000000000",
+      "fullFill": true,
+      "kind": "swap simulation quote",
+      "pool": "0xf4AC4B1b5d5E9898CB21459fd740901C44A847f7",
+      "refund": "0"
+    },
+    {
+      "id": "redeem",
+      "name": "Protocol redemption",
+      "status": "quoted",
+      "out": "1239975894628734",
+      "spent": "100000000000000000000",
+      "fullFill": true,
+      "kind": "oracle estimate",
+      "eligibleForRanking": false,
+      "warning": "Testnet execution validation pending. Estimate excluded from ranking.",
+      "feeBps": 75,
+      "hints": [
+        "0x4799e9fB361Fb6a85473bB08dA00A4012E02Cf08",
+        "1407014036927693",
+        "100000000000000000000"
+      ],
+      "refund": "0"
+    }
+  ],
+  "highestGrossRoute": "cl-2000",
+  "gasIncluded": false,
+  "executionEnabled": false
+}

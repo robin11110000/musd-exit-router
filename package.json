@@ -7,9 +7,7 @@
   "scripts": {
     "start": "node server.mjs",
     "build": "node scripts/compile.mjs",
-    "verify:mainnet": "node scripts/verify-integration.mjs",
-    "verify:cl": "node scripts/quote-cl.mjs",
-    "simulate:redemption": "node scripts/simulate-redemption.mjs",
+    "verify:testnet": "node scripts/verify-testnet.mjs",
     "test": "node --test"
   },
   "dependencies": {

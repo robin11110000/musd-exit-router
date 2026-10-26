@@ -6,21 +6,19 @@ Compare Mezo MUSD-to-BTC swaps and protocol redemptions with bounded execution.
 
 Working local quote-comparison app and an implemented, locally tested bounded redemption adapter. No public execution deployment or wallet transaction submission yet.
 
-The read-only verifier records a consistent-block mainnet snapshot: contract bytecode hashes, EIP-1967 implementation slots, the core-configured price feed, token decimals, basic-pool/router quotes, redemption hints, and estimated redemption output.
+The app and active read-only verifier use Mezo testnet only (chain 31611). Quotes for basic and concentrated pools and protocol redemption are read at a consistent block. No mainnet fallback is configured.
 
 ```sh
 npm ci
 npm test
 npm run build
 npm start
-npm run verify:mainnet
-npm run verify:cl
-npm run simulate:redemption
+npm run verify:testnet
 ```
 
-Open http://127.0.0.1:3000 for live quotes. Optionally set `MEZO_RPC_URL` to another Mezo mainnet RPC. No signer or private key is required. Scripts verify chain ID 31612 and make read-only calls. Verification reports are replaced on rerun. Live route failures are shown as unavailable, never replaced by sample prices.
+Open http://127.0.0.1:3000 for live testnet quotes. Optionally set `MEZO_TESTNET_RPC_URL` to another Mezo testnet RPC. No signer or private key is required. The app rejects chain IDs other than 31611. The testnet report is replaced on rerun. Live route failures are shown as unavailable, never replaced by sample prices.
 
-`simulate:redemption` currently reproduces an arithmetic revert on both the new adapter and a direct core call using the same ephemeral funding fixture. It exits nonzero and saves diagnostic evidence. Redemption estimates are excluded from UI ranking until this integration issue is resolved.
+Redemption estimates are excluded from UI ranking until testnet execution is validated. Historical mainnet research reports are retained as evidence only; their scripts now stop immediately without network calls. The previous mainnet funding simulation reverted and does not establish testnet execution support.
 
 Ganache is used only for local mocked-EVM tests. Its bundled dependency tree has audit advisories; it is not imported by the application server or exposed as a public RPC. This prototype is not a production deployment.
 

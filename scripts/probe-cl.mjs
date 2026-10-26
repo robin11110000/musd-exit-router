@@ -1,3 +1,4 @@
+throw new Error('Retired mainnet research script. Use npm run verify:testnet.');
 import { createPublicClient, http, parseAbi } from 'viem';
 import { writeFile } from 'node:fs/promises';
 const client = createPublicClient({ transport: http(process.env.MEZO_RPC_URL ?? 'https://mainnet.mezo.public.validationcloud.io', { timeout: 15000, retryCount: 0 }) });

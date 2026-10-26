@@ -1,3 +1,4 @@
+throw new Error('Retired mainnet research script. Use npm run verify:testnet.');
 import {createPublicClient,http,parseAbi,encodeAbiParameters,keccak256,toHex,encodeFunctionData,decodeFunctionResult,parseEther} from 'viem';
 import {writeFile} from 'node:fs/promises';
 import {compile} from './compile.mjs';

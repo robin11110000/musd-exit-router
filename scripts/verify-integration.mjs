@@ -1,3 +1,4 @@
+throw new Error('Retired mainnet research script. Use npm run verify:testnet.');
 import { createPublicClient, http, parseAbi, parseUnits, formatUnits, keccak256 } from 'viem';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { estimateRedemption, isFullInputComparable } from '../src/quote-math.mjs';

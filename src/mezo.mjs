@@ -2,13 +2,13 @@ import {createPublicClient,http,parseAbi,parseUnits,encodeFunctionData,decodeFun
 import {readFile} from 'node:fs/promises';
 import {estimateRedemption,isFullInputComparable} from './quote-math.mjs';
 export const ADDRESSES={
- musd:'0xdD468A1DDc392dcdbEf6db6e34E89AA338F9F186',btc:'0x7b7C000000000000000000000000000000000000',
- manager:'0x94AfB503dBca74aC3E4929BACEeDfCe19B93c193',borrower:'0x44b1bac67dDA612a41a58AAf779143B181dEe031',
- hints:'0xD267b3bE2514375A075fd03C3D9CBa6b95317DC3',pool:'0x52e604c44417233b6CcEDDDc0d640A405Caacefb',
- clFactory:'0xBB24AF5c6fB88F1d191FA76055e30BF881BeEb79',
+ musd:'0x118917a40FAF1CD7a13dB0Ef56C86De7973Ac503',btc:'0x7b7C000000000000000000000000000000000000',
+ manager:'0xE47c80e8c23f6B4A1aE41c34837a0599D5D16bb0',borrower:'0xCdF7028ceAB81fA0C6971208e83fa7872994beE5',
+ hints:'0x4e4cBA3779d56386ED43631b4dCD6d8EacEcBCF6',pool:'0xd16A5Df82120ED8D626a1a15232bFcE2366d6AA9',
+ clFactory:'0x7B61BC8Aa460476d142F1CD107A47297002f69ff',
 };
 const abi=parseAbi(['function priceFeed() view returns(address)','function fetchPrice() view returns(uint256)','function redemptionRate() view returns(uint256)','function getTCR(uint256) view returns(uint256)','function getAmountOut(uint256,address) view returns(uint256)','function getRedemptionHints(uint256,uint256,uint256) view returns(address,uint256,uint256)','function getPool(address,address,int24) view returns(address)']);
-const client=createPublicClient({transport:http(process.env.MEZO_RPC_URL??'https://mainnet.mezo.public.validationcloud.io',{timeout:15000,retryCount:0})});
+const client=createPublicClient({transport:http(process.env.MEZO_TESTNET_RPC_URL??'https://rpc.test.mezo.org',{timeout:15000,retryCount:0})});
 let quoter;
 async function getQuoter(){
  if(!quoter)quoter=readFile('artifacts/ReadOnlyCLQuoter.json','utf8').then(JSON.parse);
@@ -22,7 +22,7 @@ export function validateAmount(text){
 }
 export async function getQuotes(text){
  const amount=validateAmount(text);
- if(await client.getChainId()!==31612)throw new Error('RPC network mismatch.');
+ if(await client.getChainId()!==31611)throw new Error('Only Mezo testnet (31611) is allowed.');
  const blockNumber=await client.getBlockNumber();
  const block=await client.getBlock({blockNumber});
  const read=(address,functionName,args=[])=>client.readContract({address,abi,functionName,args,blockNumber});
@@ -44,9 +44,9 @@ export async function getQuotes(text){
    const [fee,tcr]=await Promise.all([read(ADDRESSES.borrower,'redemptionRate'),read(ADDRESSES.manager,'getTCR',[price])]);
    if(tcr<1_100_000_000_000_000_000n)throw new Error('Redemption disabled');
    const hints=await read(ADDRESSES.hints,'getRedemptionHints',[amount,price,50n]);
-   return {out:estimateRedemption(hints[2],price,fee),spent:hints[2],fullFill:isFullInputComparable(amount,hints[2],tcr),kind:'oracle estimate',eligibleForRanking:false,warning:'Execution validation pending: a funded read-only simulation reverted in the core path. Estimate excluded from ranking.',feeBps:Number(fee*10000n/10n**18n),hints};
+   return {out:estimateRedemption(hints[2],price,fee),spent:hints[2],fullFill:isFullInputComparable(amount,hints[2],tcr),kind:'oracle estimate',eligibleForRanking:false,warning:'Testnet execution validation pending. Estimate excluded from ranking.',feeBps:Number(fee*10000n/10n**18n),hints};
   }),
  ]);
  const viable=routes.filter(r=>r.status==='quoted'&&r.fullFill&&r.out>0n&&r.eligibleForRanking!==false).sort((a,b)=>a.out>b.out?-1:a.out<b.out?1:0);
- return {chainId:31612,blockNumber,blockHash:block.hash,blockTimestamp:block.timestamp,amount,routes:routes.map(r=>({...r,refund:r.spent===undefined?null:amount-r.spent})),highestGrossRoute:viable[0]?.id??null,gasIncluded:false,executionEnabled:false};
+ return {chainId:31611,blockNumber,blockHash:block.hash,blockTimestamp:block.timestamp,amount,routes:routes.map(r=>({...r,refund:r.spent===undefined?null:amount-r.spent})),highestGrossRoute:viable[0]?.id??null,gasIncluded:false,executionEnabled:false};
 }
