@@ -1,0 +1,22 @@
+{
+  "name": "musd-exit-router",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Compare Mezo MUSD-to-BTC swaps and protocol redemptions with bounded execution",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node scripts/compile.mjs",
+    "verify:mainnet": "node scripts/verify-integration.mjs",
+    "verify:cl": "node scripts/quote-cl.mjs",
+    "simulate:redemption": "node scripts/simulate-redemption.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "viem": "^2.38.0"
+  },
+  "devDependencies": {
+    "ganache": "^7.9.2",
+    "solc": "^0.8.30"
+  }
+}

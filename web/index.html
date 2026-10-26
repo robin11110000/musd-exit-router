@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MUSD Exit Router</title><link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script></head>
+<body><div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div><div class="scroll-meter" aria-hidden="true"></div>
+<header><a class="brand" href="/" aria-label="Exit Router home"><span class="mark">↗</span> EXIT ROUTER<span class="beta">BUILD PREVIEW</span></a><span class="network"><i></i> Mezo Mainnet · read only</span></header>
+<main>
+ <section class="intro"><span class="eyebrow">[ BITCOIN LIQUIDITY / MEZO NETWORK ]</span><h1>YOUR NEXT<br><em>MOVE.</em><span class="cursor">_</span></h1><p>MUSD in. Bitcoin out.<br>Find the path. Set your boundaries.</p><div class="intro-note"><span>₿</span><p>One amount. Multiple paths.<br><strong>Compare before you commit.</strong></p></div></section>
+ <section class="workspace" aria-label="Route comparison">
+  <div class="topline"><span>01 / COMPARE ROUTES</span><span>BTC on Mezo</span></div>
+  <form id="quote-form"><label for="amount">You have</label><div class="amount-box"><input id="amount" name="amount" value="1000" inputmode="decimal" autocomplete="off" aria-describedby="amount-help" required><span class="asset"><b>$</b> MUSD</span></div><div id="amount-help" class="subline"><span>Bitcoin-backed dollars</span><span>Up to 1,000,000 MUSD</span></div><div class="presets"><button type="button" data-amount="100">100</button><button type="button" data-amount="1000">1,000</button><button type="button" data-amount="10000">10,000</button><button type="button" data-amount="50000">50,000</button></div><button class="primary" id="compare" type="submit">Compare routes <span>↗</span></button></form>
+  <p id="status" role="status" aria-live="polite">Enter an amount to get quotes from Mezo.</p>
+  <div id="results" hidden><div class="route-heading"><span>Available paths</span><span>BTC received · before gas</span></div><div id="routes"></div><div id="quote-meta" class="quote-meta"></div><div class="footnote"><b>Know what you’re comparing</b><p>Redemption is an oracle-based estimate. Pool quotes use on-chain prices. Gas is excluded. A partial fill returns unspent MUSD and is excluded from the highest-output comparison.</p></div></div>
+  <div class="execution-note"><span class="lock">◇</span><p><strong>Execution is not deployed yet.</strong><br>You can compare live quotes. No wallet approval or funds are requested.</p></div>
+ </section>
+ <section class="principles"><div><span>01</span><h2>See every supported path</h2><p>Basic pools, concentrated liquidity, and Mezo’s redemption mechanism.</p></div><div><span>02</span><h2>Keep the whole picture</h2><p>BTC received and MUSD returned are shown separately. No hidden partial fills.</p></div><div><span>03</span><h2>Set your boundaries</h2><p>The execution contract enforces minimum output, minimum fill, and expiry. Currently tested locally.</p></div></section>
+</main><footer><span>EXIT ROUTER / BUILT ON MEZO</span><a href="https://github.com/robin11110000/musd-exit-router" target="_blank" rel="noopener noreferrer">View project ↗</a></footer>
+</body></html>
+

@@ -1,0 +1,72 @@
+{
+  "chainId": 31612,
+  "blockNumber": "12773961",
+  "method": "eth_call with ephemeral quoter code state override; callback reverts before payment",
+  "limitation": "Research quote only. Does not validate user allowance, final router execution, gas-adjusted ranking, or full input consumption at a price boundary.",
+  "rows": [
+    {
+      "spacing": 200,
+      "pool": "0x9CBc1537d255768b431488305b1C7EFc2ac95022",
+      "inputMusd": "100",
+      "spentMusd": "100",
+      "outputBtc": "0.001238338896351076",
+      "fullFill": true
+    },
+    {
+      "spacing": 200,
+      "pool": "0x9CBc1537d255768b431488305b1C7EFc2ac95022",
+      "inputMusd": "1000",
+      "spentMusd": "1000",
+      "outputBtc": "0.012355083634141637",
+      "fullFill": true
+    },
+    {
+      "spacing": 200,
+      "pool": "0x9CBc1537d255768b431488305b1C7EFc2ac95022",
+      "inputMusd": "10000",
+      "spentMusd": "10000",
+      "outputBtc": "0.122464548223921118",
+      "fullFill": true
+    },
+    {
+      "spacing": 200,
+      "pool": "0x9CBc1537d255768b431488305b1C7EFc2ac95022",
+      "inputMusd": "50000",
+      "spentMusd": "46208.902892056647349802",
+      "outputBtc": "0.545366347426203001",
+      "fullFill": false
+    },
+    {
+      "spacing": 2000,
+      "pool": "0x76Fd06B064063Ade870E5f005277e17AcB42D292",
+      "inputMusd": "100",
+      "spentMusd": "0.043659459893895507",
+      "outputBtc": "0.000000497470827094",
+      "fullFill": false
+    },
+    {
+      "spacing": 2000,
+      "pool": "0x76Fd06B064063Ade870E5f005277e17AcB42D292",
+      "inputMusd": "1000",
+      "spentMusd": "0.043659459893895507",
+      "outputBtc": "0.000000497470827094",
+      "fullFill": false
+    },
+    {
+      "spacing": 2000,
+      "pool": "0x76Fd06B064063Ade870E5f005277e17AcB42D292",
+      "inputMusd": "10000",
+      "spentMusd": "0.043659459893895507",
+      "outputBtc": "0.000000497470827094",
+      "fullFill": false
+    },
+    {
+      "spacing": 2000,
+      "pool": "0x76Fd06B064063Ade870E5f005277e17AcB42D292",
+      "inputMusd": "50000",
+      "spentMusd": "0.043659459893895507",
+      "outputBtc": "0.000000497470827094",
+      "fullFill": false
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "chainId": 31612,
+  "blockNumber": "12773721",
+  "pools": [
+    {
+      "spacing": 1,
+      "address": "0x0000000000000000000000000000000000000000",
+      "liquidity": null
+    },
+    {
+      "spacing": 10,
+      "address": "0x0000000000000000000000000000000000000000",
+      "liquidity": null
+    },
+    {
+      "spacing": 50,
+      "address": "0x0000000000000000000000000000000000000000",
+      "liquidity": null
+    },
+    {
+      "spacing": 100,
+      "address": "0x0000000000000000000000000000000000000000",
+      "liquidity": null
+    },
+    {
+      "spacing": 200,
+      "address": "0x9CBc1537d255768b431488305b1C7EFc2ac95022",
+      "liquidity": "1236481674469719319964"
+    },
+    {
+      "spacing": 2000,
+      "address": "0x76Fd06B064063Ade870E5f005277e17AcB42D292",
+      "liquidity": "5410687175752540"
+    }
+  ],
+  "limitation": "Discovery only. Active liquidity is not an executable quote. CL routing remains unavailable until verified quote and execution integration."
+}

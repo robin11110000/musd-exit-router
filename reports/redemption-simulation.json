@@ -1,0 +1,20 @@
+{
+  "chainId": 31612,
+  "blockNumber": "12773956",
+  "status": "reverted",
+  "error": "Execution reverted with reason: arithmetic underflow or overflow.",
+  "method": "eth_call with ephemeral adapter code, balance and allowance",
+  "request": {
+    "amount": "1000000000000000000000",
+    "minBtcOut": "1",
+    "minMusdRedeemed": "1000000000000000000000",
+    "deadline": "1793000971",
+    "recipient": "0x000000000000000000000000000000000000bEEF",
+    "firstHint": "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+    "upperHint": "0x0000000000000000000000000000000000000000",
+    "lowerHint": "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+    "partialNICR": "122885958221388580",
+    "maxIterations": "50"
+  },
+  "directCore": "Execution reverted with reason: arithmetic underflow or overflow."
+}

@@ -1,0 +1,172 @@
+{
+  "generatedAt": "2026-10-26T06:33:59.053Z",
+  "status": "read-only-probe-complete",
+  "sources": [
+    "https://mezo.org/docs/developers/musd/musd-redemptions/",
+    "https://mezo.org/docs/developers/features/mezo-pools/"
+  ],
+  "limitations": [
+    "Pool and router eth_call quotes are not funded execution simulations.",
+    "Redemption output is a fee-adjusted oracle estimate for the hinted fill, not an execution guarantee.",
+    "Gas-adjusted ranking is withheld until executable calldata and gas estimates are verified.",
+    "Concentrated-liquidity and multi-hop routes are outside this first probe."
+  ],
+  "contracts": {
+    "musd": {
+      "address": "0xdD468A1DDc392dcdbEf6db6e34E89AA338F9F186",
+      "bytecodeHash": "0xebef2e2ffe044523a359a32307f10ff88b116a7099c6ded1e9329bf815e051c9",
+      "implementation": null
+    },
+    "troveManager": {
+      "address": "0x94AfB503dBca74aC3E4929BACEeDfCe19B93c193",
+      "bytecodeHash": "0xf34e17c7ed3f2b79b7772b4b9dc775f3c3bc5c1f487e07eb1b6b33de2642bf65",
+      "implementation": "0xdcfdab0dea52e5efc8400283d46fd0d122a519e9",
+      "implementationBytecodeHash": "0xea57d9ee651d19a4e3947e235a38873f0849785add2e87ed7406feb7a1487dfe"
+    },
+    "borrowerOperations": {
+      "address": "0x44b1bac67dDA612a41a58AAf779143B181dEe031",
+      "bytecodeHash": "0xc354d66495ff62bd0c55199183be1e6ba5b6b1f61e9c9bad0be03ae41ca1540f",
+      "implementation": "0x501670bbbe2ec8c11449c28c0c9e6677d5ea9b61",
+      "implementationBytecodeHash": "0x87a175620a5e54bb59b8c80ed45631f94e2b03afbd7f062e58ce6451546862f5"
+    },
+    "priceFeed": {
+      "address": "0xc5aC5A8892230E0A3e1c473881A2de7353fFcA88",
+      "bytecodeHash": "0xcdf960fb6a1a5df69a7a1f92e85cdb16e3b160f541938bf7d96b1ed6d0397559",
+      "implementation": "0xe9ca1abe343515312eb6d13178c5a2dce3c036fa",
+      "implementationBytecodeHash": "0x9a428472d03e81e03891076d563d0d05778b39f1dc8dd70f523b1044f8c61aad"
+    },
+    "hintHelpers": {
+      "address": "0xD267b3bE2514375A075fd03C3D9CBa6b95317DC3",
+      "bytecodeHash": "0x1c1e7999a82991918f3d746009635a9eca30bc2004dd3bb4855e8de60ac762cf",
+      "implementation": "0x82ab5f02993bf312d9aca03157f26febebc76108",
+      "implementationBytecodeHash": "0x49ea863431f90f85807b0662b81193bd990bfbede3dacc463cfb304509c403a9"
+    },
+    "sortedTroves": {
+      "address": "0x8C5DB4C62BF29c1C4564390d10c20a47E0b2749f",
+      "bytecodeHash": "0x0f353c241b5d757bfc6991f13f668c5e4c0013a0117eff78d9c1fd70d3c860cb",
+      "implementation": "0x19868d388668a8e248784e78b0c644b517febaae",
+      "implementationBytecodeHash": "0x3c2bce3b0e60c30d858d5ea640a0009a9efe74332cd1744a742c09a0f834162f"
+    },
+    "router": {
+      "address": "0x16A76d3cd3C1e3CE843C6680d6B37E9116b5C706",
+      "bytecodeHash": "0xbc050e5d581a9e9e8e72b2041254a6280ac36198bc06f994f047ae97492fcaa6",
+      "implementation": null
+    },
+    "factory": {
+      "address": "0x83FE469C636C4081b87bA5b3Ae9991c6Ed104248",
+      "bytecodeHash": "0x331143ff8b482ee5536b08138299886608b12d20e288f41c89db143828553537",
+      "implementation": null
+    },
+    "pool": {
+      "address": "0x52e604c44417233b6CcEDDDc0d640A405Caacefb",
+      "bytecodeHash": "0x5e8f087b8d9f56a19a5d1b3fb2284a1afbcc7b835359b2468cb6fd1f5872875b",
+      "implementation": null
+    }
+  },
+  "quotes": [
+    {
+      "inputMusd": "100",
+      "inputWei": "100000000000000000000",
+      "swapBtc": "0.001236029315374585",
+      "routerBtc": "0.001236029315374585",
+      "poolRouterAgree": true,
+      "redemptionFillMusd": "100",
+      "redemptionRefundMusd": "0",
+      "redemptionEstimatedBtc": "0.001241527901166123",
+      "comparableFullInput": true,
+      "hints": [
+        "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+        "115278308453139854",
+        "100000000000000000000"
+      ]
+    },
+    {
+      "inputMusd": "1000",
+      "inputWei": "1000000000000000000000",
+      "swapBtc": "0.012178466721964692",
+      "routerBtc": "0.012178466721964692",
+      "poolRouterAgree": true,
+      "redemptionFillMusd": "1000",
+      "redemptionRefundMusd": "0",
+      "redemptionEstimatedBtc": "0.012415279011661231",
+      "comparableFullInput": true,
+      "hints": [
+        "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+        "122886056481505620",
+        "1000000000000000000000"
+      ]
+    },
+    {
+      "inputMusd": "10000",
+      "inputWei": "10000000000000000000000",
+      "swapBtc": "0.106166949034545363",
+      "routerBtc": "0.106166949034545363",
+      "poolRouterAgree": true,
+      "redemptionFillMusd": "10000",
+      "redemptionRefundMusd": "0",
+      "redemptionEstimatedBtc": "0.124152790116612306",
+      "comparableFullInput": true,
+      "hints": [
+        "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+        "366725723556252837",
+        "10000000000000000000000"
+      ]
+    },
+    {
+      "inputMusd": "50000",
+      "inputWei": "50000000000000000000000",
+      "swapBtc": "0.33812046204455935",
+      "routerBtc": "0.33812046204455935",
+      "poolRouterAgree": true,
+      "redemptionFillMusd": "14289.492353518928797792",
+      "redemptionRefundMusd": "35710.507646481071202208",
+      "redemptionEstimatedBtc": "0.177408034503937198",
+      "comparableFullInput": false,
+      "hints": [
+        "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+        "0",
+        "14289492353518928797792"
+      ]
+    },
+    {
+      "inputMusd": "100000",
+      "inputWei": "100000000000000000000000",
+      "swapBtc": "0.465153998691756704",
+      "routerBtc": "0.465153998691756704",
+      "poolRouterAgree": true,
+      "redemptionFillMusd": "14289.492353518928797792",
+      "redemptionRefundMusd": "85710.507646481071202208",
+      "redemptionEstimatedBtc": "0.177408034503937198",
+      "comparableFullInput": false,
+      "hints": [
+        "0x593c427d8C7bf5C555Ed41cd7CB7cCe8C9F15bB5",
+        "0",
+        "14289492353518928797792"
+      ]
+    }
+  ],
+  "errors": [],
+  "chainId": 31612,
+  "blockNumber": "12772717",
+  "blockHash": "0x11557fafccb4c1775db07138db6e422731548b5c938b6b912eccc332f86a8874",
+  "blockTimestamp": "1792996436",
+  "pool": {
+    "token0": "0x7b7C000000000000000000000000000000000000",
+    "token1": "0xdD468A1DDc392dcdbEf6db6e34E89AA338F9F186",
+    "btc": "0x7b7C000000000000000000000000000000000000",
+    "btcDecimals": 18,
+    "reserves": [
+      "745086815128231880",
+      "60000133025216050345728",
+      "1792989584"
+    ]
+  },
+  "redemption": {
+    "actualPriceFeed": "0xc5aC5A8892230E0A3e1c473881A2de7353fFcA88",
+    "documentedPriceFeedMatches": true,
+    "priceE18": "79941820000000000000000",
+    "feeE18": "7500000000000000",
+    "tcrE18": "91526462787283975581",
+    "systemAllowsRedemption": true
+  }
+}
