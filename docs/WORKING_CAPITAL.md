@@ -10,7 +10,7 @@ The savings strategy address is pinned at account creation. A strategy change bl
 
 ## Testnet integration status
 
-The target proxy and ABI were independently read from testnet explorer evidence in `integrations/testnet/`. The savings implementation is verified, but the configured strategy source was not available and no funded deposit/withdraw lifecycle has succeeded in our verification. PCV and gauge are zero in the captured snapshot. There is no promised yield rate and no savings staking integration. Do not enable a funded policy until strategy and lifecycle validation are complete. Local tests explicitly use a savings mock; its simulated yield is not protocol performance.
+The target proxy and ABI were independently read from testnet explorer evidence in `integrations/testnet/`. The savings implementation is verified, but the configured strategy source was not available and no funded deposit/withdraw lifecycle has succeeded in our verification. PCV and gauge are zero in the captured snapshot. There is no promised yield rate and no savings staking integration. The frontend exposes wallet-controlled experimental testnet funding and allocation with this limitation displayed. Use only test assets; production readiness is not established. Local tests explicitly use a savings mock; its simulated yield is not protocol performance.
 
 ## Commands
 

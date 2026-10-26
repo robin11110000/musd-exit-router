@@ -27,3 +27,8 @@ Existing getters such as `userSnapshot` are available in source, but the policy 
 ## Git and release
 
 Working branch: `buildathon`. Upstream retains original source history; `origin` points to robin11110000/musd-exit-router. Commit each small tested feature. Push after each completed feature when authentication works. Local push currently fails authentication; no claim of successful publication should be made until verified.
+# Working-capital implementation update
+
+The new frontend is `ui/src/pages/capital.tsx` at `/capital` (the root redirects there). It uses the exact generated `WorkingCapitalVault` ABI and deployment bytecode. Run `npm run build:capital` from the contract repository, then `npm ci` and `npm run dev` inside `ui`. Open `http://127.0.0.1:3002/capital` in a browser with an injected EVM wallet for wallet actions.
+
+Implemented: fixed-testnet connection, empty/inactive vault deployment, owner and balance inspection, policy edits and activation, exact-amount funding approvals, surplus allocation, keeper permissions, revocation, liquid withdrawal, savings unwind and yield claims. Every owner transaction rechecks network, contract targets and current owner, simulates, waits for a receipt and refreshes balances. Source-verified savings configuration is rechecked before deployment. No application deployment address is fabricated. Funding and allocation are explicitly experimental testnet actions, initiated and confirmed by the user wallet. The strategy and funded lifecycle remain unverified; no working yield or withdrawal claim is made. The frontend checks deployed vault bytecode against the generated runtime template before approving funds.
