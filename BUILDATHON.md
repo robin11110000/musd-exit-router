@@ -36,3 +36,9 @@ The UI development/start port is 3002 to avoid conflicting with the separate exi
 Midpoint: authorization, asset accounting, reentrancy, external calls, oracle trust and fee limits.
 
 Final: regression tests, dependency review, deployment configuration, admin powers, failure handling and documentation of remaining risks. Internal reviews do not constitute an independent audit.
+
+## First security correction
+
+An unrelated caller could previously call `autoDeposit(user, amount)` to move a user's vault balance into the configured aggregator without that user's instruction. The balance remained credited to the user, so this is an unauthorized routing issue, not proof of theft. Entry is now restricted to the balance owner. The targeted local-EVM regression test reproduces the original behavior and verifies authorized deposit and withdrawal after the fix.
+
+Run `git submodule update --init --recursive`, `npm ci`, then `npm run test:security`. The original Foundry suite is separate and still needs to be run before claiming full regression coverage.

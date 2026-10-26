@@ -19,6 +19,7 @@ contract VaultManager is Ownable2Step, Pausable {
     error ZeroAddress();
     error Inactive();
     error InsufficientBalance();
+    error Unauthorized();
 
     struct Config {
         uint256 musdPerRedeem; // exact MUSD per execution
@@ -100,10 +101,11 @@ contract VaultManager is Ownable2Step, Pausable {
     }
 
     /// @notice Deposit a portion of a user's internal balance to the aggregator on their behalf.
-    /// @dev Anyone can trigger this if the user has balance and an aggregator is set.
+    /// @dev Only the balance owner may choose to enter an aggregator.
     /// @param _user   Target user whose internal balance is used.
     /// @param _amount MUSD amount to deposit.
     function autoDeposit(address _user, uint256 _amount) external whenNotPaused {
+        if (msg.sender != _user) revert Unauthorized();
         YieldAggregator agg = aggregator;
         if (address(agg) == address(0)) revert ZeroAddress();
         uint256 bal = balances[_user];
