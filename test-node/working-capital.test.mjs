@@ -11,14 +11,16 @@ const mock=`pragma solidity 0.8.30;
 import "@openzeppelin/contracts/mocks/token/ERC20Mock.sol";
 contract SavingsMock {
  ERC20Mock public musdToken; mapping(address=>uint256) public balanceOf;
- bool public dishonest; address public strategy;
+ bool public dishonest; bool public attack; bool public reentered; address public strategy;
  constructor(address token){musdToken=ERC20Mock(token);strategy=address(this);}
  function setStrategy(address next) external {strategy=next;}
  function claimYield() external returns(uint256){musdToken.mint(msg.sender,1 ether);return 1 ether;}
  function setDishonest(bool on) external {dishonest=on;}
+ function setAttack(bool on) external {attack=on;}
  function deposit(uint256 amount) external {
   musdToken.transferFrom(msg.sender,address(this),amount);
   balanceOf[msg.sender]+=dishonest ? amount/2 : amount;
+  if(attack){(bool ok,)=msg.sender.call(abi.encodeWithSignature("allocate(uint256)",1));reentered=ok;}
  }
  function withdraw(uint256 amount) external {
   balanceOf[msg.sender]-=amount;
@@ -105,4 +107,15 @@ test('expired policy and dishonest savings cannot consume funds or budget',async
  await provider.request({method:'evm_increaseTime',params:[3601]});await provider.request({method:'evm_mine',params:[]});
  assert.equal((await act('allocate',[amount('10')],keeper)).status,'reverted');
  assert.equal((await act('withdraw',[amount('100')])).status,'success');
+});
+
+test('a savings callback cannot reenter an otherwise authorized allocation',async t=>{
+ const {act,view,send,read,savings,keeper,policy}=await setup(t);
+ await act('setPolicy',[{...policy,cooldown:0n}]);
+ await act('setKeeper',[savings,true]);
+ await send(savings,savingsArt,'setAttack',[true]);
+ assert.equal((await act('allocate',[amount('10')],keeper)).status,'success');
+ assert.equal(await read(savings,savingsArt,'reentered'),false);
+ assert.equal((await view('snapshot'))[0],amount('90'));
+ assert.equal((await view('policy'))[2],amount('40'));
 });

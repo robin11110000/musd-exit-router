@@ -1,0 +1,18 @@
+{
+  "chainId": 31611,
+  "blockNumber": "16385724",
+  "blockHash": "0xf6a4ef2ee2e35bf42f30f5e4265620cfcd3a93fe55ecc47dfe6eb1e97276da01",
+  "savings": "0x6f461c68B2c5492C0F5CCEc5a264d692aA7A8e16",
+  "method": "eth_call with ephemeral helper code and 100 MUSD balance override; live savings and strategy",
+  "broadcast": false,
+  "status": "simulated-success",
+  "limitations": [
+    "No deployed application contract or mined transaction.",
+    "Artificial funding exists only inside eth_call.",
+    "Does not prove future liquidity or earnings; strategy remains unverified."
+  ],
+  "liquidAfterDeposit": "40000000000000000000",
+  "principalAfterDeposit": "60000000000000000000",
+  "returnedMusd": "100000000000000000000",
+  "finalPrincipal": "0"
+}

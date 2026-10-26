@@ -6,7 +6,10 @@
     "test:security": "node --test test-node/*.test.mjs",
     "build:capital": "node scripts/build-capital.mjs",
     "verify:testnet": "node integrations/testnet/verify.mjs",
-    "preflight:capital": "node scripts/preflight-capital.mjs"
+    "preflight:capital": "node scripts/preflight-capital.mjs",
+    "simulate:capital": "node scripts/simulate-capital.mjs",
+    "keeper:capital": "node scripts/keeper-capital.mjs",
+    "prepare:deploy": "node scripts/prepare-capital-deploy.mjs"
   },
   "devDependencies": { "ganache": "7.9.2", "solc": "0.8.30", "viem": "2.57.11" }
 }
