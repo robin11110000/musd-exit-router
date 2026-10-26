@@ -16,11 +16,15 @@ The target proxy and ABI were independently read from testnet explorer evidence 
 
 ```sh
 npm run test:security
+npm run build:capital
+npm run preflight:capital
 node integrations/testnet/verify.mjs
 forge script script/WorkingCapitalDeploy.s.sol:WorkingCapitalDeploy --rpc-url https://rpc.test.mezo.org
 ```
 
 The Forge command is simulation only unless `--broadcast` is explicitly added. It reads `DEPLOYER_PRIVATE_KEY` locally and optionally `VAULT_OWNER`; never commit either secret. Forge is not installed in the current environment, so deployment script compilation is checked using solc instead. No deployment transaction has been submitted.
+
+`build:capital` writes the frontend ABI, reproducible compiler settings and deployment bytecode to `exports/WorkingCapitalVault.json`. This artifact contains no application deployment address. `preflight:capital` uses only public testnet reads and writes a block-pinned comparison of implementation, token and strategy against the reviewed evidence. A successful preflight means configuration matches; `allocationReady` remains false until the funded lifecycle and strategy review are completed.
 
 ## Frontend contract boundary
 
