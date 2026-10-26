@@ -1,0 +1,33 @@
+{
+  "chainId": 31611,
+  "rpc": "https://rpc.test.mezo.org",
+  "sourceRevision": "da7888a10949c8a5d3f884454cec8978cfa87e48",
+  "tigrisRevision": "0a3b5e840ac8e187cc705fbeddcf00f88b09247e",
+  "contracts": {
+    "musd": {
+      "address": "0x118917a40FAF1CD7a13dB0Ef56C86De7973Ac503",
+      "status": "testnet-read-verified-see-evidence",
+      "source": "https://mezo.org/docs/users/resources/contracts-reference/",
+      "reads": [{"signature":"function name() view returns (string)"},{"signature":"function symbol() view returns (string)"},{"signature":"function decimals() view returns (uint8)"},{"signature":"function totalSupply() view returns (uint256)"}]
+    },
+    "skip": {
+      "address": "0x7b7c000000000000000000000000000000000015",
+      "status": "testnet-read-verified-18-decimals-see-evidence",
+      "source": "https://mezo.org/docs/developers/architecture/oracles/read-oracle/",
+      "reads": [{"signature":"function decimals() view returns (uint8)"},{"signature":"function latestRoundData() view returns (uint80,int256,uint256,uint256,uint80)"}]
+    },
+    "pyth": {
+      "address": "0x2880aB155794e7179c9eE2e38200202908C17B43",
+      "status": "deployed-but-musd-feed-stale-see-evidence",
+      "source": "https://mezo.org/docs/developers/architecture/oracles/read-oracle/",
+      "reads": [{"signature":"function getPriceNoOlderThan(bytes32,uint256) view returns ((int64 price,uint64 conf,int32 expo,uint256 publishTime))","args":["0x0617a9b725011a126a2b9fd53563f4236501f32cf76d877644b943394606c6de","$MAX_AGE"]}]
+    },
+    "savings": {"address":"0x6f461c68B2c5492C0F5CCEc5a264d692aA7A8e16","implementation":"0x92D12f0a60906b39d81acD9bf8977b6c824cD98C","status":"source-verified-testnet-read-only-no-funds-tested","source":"https://api.explorer.test.mezo.org/api/v2/smart-contracts/0x92D12f0a60906b39d81acD9bf8977b6c824cD98C","reads":[{"signature":"function musdToken() view returns (address)"},{"signature":"function strategy() view returns (address)"},{"signature":"function vaultGauge() view returns (address)"},{"signature":"function yieldIndex() view returns (uint256)"}]},
+    "savingsGauge": {"address":null,"status":"unavailable-unverified","reason":"Savings vault vaultGauge() is zero in captured state; no current savings staking integration established. General Earn gauge infrastructure exists separately."}
+  },
+  "earnArtifactReferences": {
+    "VeBTCVoter": {"address":"0x72F8dd7F44fFa19E45955aa20A5486E8EB255738","status":"bytecode-and-length-read-confirmed-artifact-runtime-mismatch","source":"solidity/deployments/testnet/VeBTCVoter.json"},
+    "GaugeFactory": {"address":"0x027fa1adb4CF67558112dF7C4f83C6CFE9e0b7AD","status":"exact-artifact-runtime-match","source":"solidity/deployments/testnet/GaugeFactory.json"},
+    "VeBTC": {"address":"0xB63fcCd03521Cf21907627bd7fA465C129479231","status":"bytecode-name-symbol-reads-confirmed-current-role-not-established","source":"solidity/deployments/testnet/VeBTC.json"}
+  }
+}
